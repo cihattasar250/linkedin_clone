@@ -4,7 +4,7 @@ class AgimSayfasi extends StatelessWidget {
   const AgimSayfasi({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext baglam) {
     return DefaultTabController(
       length: 2,
 
@@ -17,7 +17,7 @@ class AgimSayfasi extends StatelessWidget {
               children: [
                 Theme(
                   data: Theme.of(
-                    context,
+                    baglam,
                   ).copyWith(dividerColor: Colors.transparent),
 
                   child: TabBar(
@@ -65,8 +65,9 @@ class AgimSayfasi extends StatelessWidget {
                   ),
                 ),
 
-                Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
+                _inceAyirici(),
 
+                // Davetler alani ustte sabit dursun diye ayri tutuldu.
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -94,24 +95,25 @@ class AgimSayfasi extends StatelessWidget {
                   ),
                 ),
 
-                Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
+                _inceAyirici(),
 
                 const DavetKarti(
-                  isim: "Eren Yalçın",
-                  unvan: "Mobile App Developer",
-                  ortakBaglanti: "8 ortak bağlantı",
-                  zaman: "9 dakika önce",
+                  kullaniciAdi: "Eren Yalçın",
+                  kullaniciUnvani: "Mobile App Developer",
+                  ortakBaglantiYazisi: "8 ortak bağlantı",
+                  davetZamani: "9 dakika önce",
                 ),
 
                 const DavetKarti(
-                  isim: "Ahmet Kaya",
-                  unvan: "UI/UX Designer",
-                  ortakBaglanti: "12 ortak bağlantı",
-                  zaman: "1 saat önce",
+                  kullaniciAdi: "Ahmet Kaya",
+                  kullaniciUnvani: "UI/UX Designer",
+                  ortakBaglantiYazisi: "12 ortak bağlantı",
+                  davetZamani: "1 saat önce",
                 ),
 
-                Divider(height: 10, thickness: 10, color: Colors.grey.shade300),
+                _kalinAyirici(),
 
+                // Oneriler bolumu grid olarak kaldi, sadece kod okunurlugu toparlandi.
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12,
@@ -155,27 +157,27 @@ class AgimSayfasi extends StatelessWidget {
 
                   children: const [
                     KisiKartWidget(
-                      isim: "Fatmagül Memiş",
-                      unvan: "Bilgisayar Mühendisi Adayı",
-                      fotografUrl: "https://i.pravatar.cc/300?img=5",
+                      kisiAdi: "Fatmagül Memiş",
+                      kisiUnvani: "Bilgisayar Mühendisi Adayı",
+                      profilFotografUrl: "https://i.pravatar.cc/300?img=5",
                     ),
 
                     KisiKartWidget(
-                      isim: "Oğuzhan Dursun",
-                      unvan: "Computer engineering student",
-                      fotografUrl: "https://i.pravatar.cc/300?img=12",
+                      kisiAdi: "Oğuzhan Dursun",
+                      kisiUnvani: "Computer engineering student",
+                      profilFotografUrl: "https://i.pravatar.cc/300?img=12",
                     ),
 
                     KisiKartWidget(
-                      isim: "Uğur Çapkur",
-                      unvan: "Katıldı (Giresun Üniversitesi)",
-                      fotografUrl: "https://i.pravatar.cc/300?img=3",
+                      kisiAdi: "Uğur Çapkur",
+                      kisiUnvani: "Katıldı (Giresun Üniversitesi)",
+                      profilFotografUrl: "https://i.pravatar.cc/300?img=3",
                     ),
 
                     KisiKartWidget(
-                      isim: "İlennur Civelek",
-                      unvan: "Computer Engineering Student",
-                      fotografUrl: "https://i.pravatar.cc/300?img=9",
+                      kisiAdi: "İlennur Civelek",
+                      kisiUnvani: "Computer Engineering Student",
+                      profilFotografUrl: "https://i.pravatar.cc/300?img=9",
                     ),
                   ],
                 ),
@@ -188,21 +190,29 @@ class AgimSayfasi extends StatelessWidget {
       ),
     );
   }
+
+  Widget _inceAyirici() {
+    return Divider(height: 1, thickness: 1, color: Colors.grey.shade300);
+  }
+
+  Widget _kalinAyirici() {
+    return Divider(height: 10, thickness: 10, color: Colors.grey.shade300);
+  }
 }
 
 class DavetKarti extends StatelessWidget {
-  final String isim;
-  final String unvan;
-  final String ortakBaglanti;
-  final String zaman;
-
   const DavetKarti({
     super.key,
-    required this.isim,
-    required this.unvan,
-    required this.ortakBaglanti,
-    required this.zaman,
+    required this.kullaniciAdi,
+    required this.kullaniciUnvani,
+    required this.ortakBaglantiYazisi,
+    required this.davetZamani,
   });
+
+  final String kullaniciAdi;
+  final String kullaniciUnvani;
+  final String ortakBaglantiYazisi;
+  final String davetZamani;
 
   @override
   Widget build(BuildContext context) {
@@ -237,7 +247,7 @@ class DavetKarti extends StatelessWidget {
                       children: [
                         Flexible(
                           child: Text(
-                            isim,
+                            kullaniciAdi,
                             style: const TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w600,
@@ -259,7 +269,7 @@ class DavetKarti extends StatelessWidget {
                     const SizedBox(height: 3),
 
                     Text(
-                      unvan,
+                      kullaniciUnvani,
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey.shade700,
@@ -269,7 +279,7 @@ class DavetKarti extends StatelessWidget {
                     const SizedBox(height: 3),
 
                     Text(
-                      ortakBaglanti,
+                      ortakBaglantiYazisi,
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey.shade700,
@@ -279,7 +289,7 @@ class DavetKarti extends StatelessWidget {
                     const SizedBox(height: 4),
 
                     Text(
-                      zaman,
+                      davetZamani,
                       style: const TextStyle(fontSize: 13, color: Colors.grey),
                     ),
                   ],
@@ -290,43 +300,18 @@ class DavetKarti extends StatelessWidget {
 
               Row(
                 children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-
-                      border: Border.all(color: Colors.grey, width: 1.4),
-                    ),
-
-                    child: const Icon(
-                      Icons.close,
-                      size: 25,
-                      color: Colors.grey,
-                    ),
+                  _davetButonu(
+                    ikon: Icons.close,
+                    renk: Colors.grey,
+                    kenarKalinligi: 1.4,
                   ),
 
                   const SizedBox(width: 10),
 
-                  Container(
-                    width: 40,
-                    height: 40,
-
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-
-                      border: Border.all(
-                        color: const Color(0xFF0A66C2),
-                        width: 1.8,
-                      ),
-                    ),
-
-                    child: const Icon(
-                      Icons.check,
-                      size: 25,
-                      color: Color(0xFF0A66C2),
-                    ),
+                  _davetButonu(
+                    ikon: Icons.check,
+                    renk: const Color(0xFF0A66C2),
+                    kenarKalinligi: 1.8,
                   ),
                 ],
               ),
@@ -338,19 +323,35 @@ class DavetKarti extends StatelessWidget {
       ],
     );
   }
+
+  Widget _davetButonu({
+    required IconData ikon,
+    required Color renk,
+    required double kenarKalinligi,
+  }) {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: renk, width: kenarKalinligi),
+      ),
+      child: Icon(ikon, size: 25, color: renk),
+    );
+  }
 }
 
 class KisiKartWidget extends StatelessWidget {
-  final String isim;
-  final String unvan;
-  final String fotografUrl;
-
   const KisiKartWidget({
     super.key,
-    required this.isim,
-    required this.unvan,
-    required this.fotografUrl,
+    required this.kisiAdi,
+    required this.kisiUnvani,
+    required this.profilFotografUrl,
   });
+
+  final String kisiAdi;
+  final String kisiUnvani;
+  final String profilFotografUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -394,7 +395,7 @@ class KisiKartWidget extends StatelessWidget {
 
                   child: CircleAvatar(
                     radius: 35,
-                    backgroundImage: NetworkImage(fotografUrl),
+                    backgroundImage: NetworkImage(profilFotografUrl),
                   ),
                 ),
               ),
@@ -424,7 +425,7 @@ class KisiKartWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
 
             child: Text(
-              isim,
+              kisiAdi,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
 
@@ -440,7 +441,7 @@ class KisiKartWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
 
             child: Text(
-              unvan,
+              kisiUnvani,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
 
