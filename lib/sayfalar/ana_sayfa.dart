@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../parcalar/paylasim_karti.dart';
 
+const double _kartArasiBosluk = 10;
+
 class AnaSayfa extends StatelessWidget {
   const AnaSayfa({super.key});
 
   @override
   Widget build(BuildContext baglam) {
-    // Kartlari ayri listede tutunca aradaki bosluklari duzenlemek kolay oluyor.
-    final paylasimlar = const [
+    // Kartlar liste halinde durunca aralarindaki bosluk kolay ayarlaniyor.
+    final paylasimKartlari = const [
       PaylasimKarti(
         kullaniciAdi: 'Zeynep Kaya',
         kullaniciUnvani: 'Bilgisayar Programciligi Ogrencisi',
@@ -42,22 +44,22 @@ class AnaSayfa extends StatelessWidget {
     ];
 
     return ListView(
-      padding: const EdgeInsets.only(top: 10, bottom: 18),
-      children: _kartlariBosluklaSirala(paylasimlar),
+      padding: const EdgeInsets.only(top: 10, bottom: 16),
+      children: _kartlariBoslukluGoster(paylasimKartlari),
     );
   }
 
-  List<Widget> _kartlariBosluklaSirala(List<Widget> paylasimlar) {
-    final siraliListe = <Widget>[];
+  List<Widget> _kartlariBoslukluGoster(List<Widget> paylasimKartlari) {
+    final kartListesi = <Widget>[];
 
-    for (var i = 0; i < paylasimlar.length; i++) {
-      siraliListe.add(paylasimlar[i]);
+    for (var i = 0; i < paylasimKartlari.length; i++) {
+      kartListesi.add(paylasimKartlari[i]);
 
-      if (i != paylasimlar.length - 1) {
-        siraliListe.add(const SizedBox(height: 10));
+      if (i != paylasimKartlari.length - 1) {
+        kartListesi.add(const SizedBox(height: _kartArasiBosluk));
       }
     }
 
-    return siraliListe;
+    return kartListesi;
   }
 }

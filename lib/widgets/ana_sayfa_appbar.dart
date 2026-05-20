@@ -9,13 +9,9 @@ class AnaSayfaAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-
       leading: const _ProfilFotografi(),
-
       titleSpacing: 0,
-
       title: const _AramaKutusu(),
-
       actions: const [_MesajButonu()],
     );
   }
@@ -31,10 +27,8 @@ class _ProfilFotografi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
-
       child: CircleAvatar(
         backgroundColor: Colors.grey.shade300,
-
         child: const Icon(Icons.person, color: Colors.black, size: 20),
       ),
     );
@@ -46,42 +40,25 @@ class _AramaKutusu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Arama kutusunun kenarligi her durumda ayni kalsin.
+    final aramaKenarligi = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+      borderSide: const BorderSide(color: Colors.black, width: 1),
+    );
+
     return SizedBox(
       height: 40,
-
       child: TextField(
         decoration: InputDecoration(
           hintText: 'Arama yap',
-
           hintStyle: const TextStyle(color: Colors.grey, fontSize: 14),
-
           prefixIcon: const Icon(Icons.search, size: 18, color: Colors.black),
-
           filled: true,
           fillColor: Colors.white,
-
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 0,
-          ),
-
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-
-            borderSide: const BorderSide(color: Colors.black, width: 1),
-          ),
-
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-
-            borderSide: const BorderSide(color: Colors.black, width: 1),
-          ),
-
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-
-            borderSide: const BorderSide(color: Colors.black, width: 1),
-          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+          border: aramaKenarligi,
+          enabledBorder: aramaKenarligi,
+          focusedBorder: aramaKenarligi,
         ),
       ),
     );
@@ -95,13 +72,10 @@ class _MesajButonu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 14, left: 10),
-
       child: SvgPicture.asset(
         'assets/svg/mesaj.svg',
-
         width: 24,
         height: 24,
-
         colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
       ),
     );

@@ -11,12 +11,12 @@ class GonderSayfasi extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
-              const SizedBox(height: 14),
-              _ustBarAlani(),
-              const SizedBox(height: 28),
+              const SizedBox(height: 12),
+              _ustSatirAlani(),
+              const SizedBox(height: 26),
               _paylasimYaziAlani(),
               _altButonAlani(),
             ],
@@ -27,7 +27,7 @@ class GonderSayfasi extends StatelessWidget {
   }
 
   // Ust kisim appbar gibi kullanildigi icin ayri tutuldu.
-  Widget _ustBarAlani() {
+  Widget _ustSatirAlani() {
     return Row(
       children: [
         _kapatButonu(),
