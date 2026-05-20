@@ -3,21 +3,24 @@ import 'package:flutter/material.dart';
 class AltNavigationBar extends StatelessWidget {
   const AltNavigationBar({
     super.key,
-    required this.seciliIndex,
-    required this.onTap,
-  });
+    required int seciliIndex,
+    required ValueChanged<int> onTap,
+  }) : seciliSekme = seciliIndex,
+       sekmeSecildi = onTap;
 
-  final int seciliIndex;
-  final ValueChanged<int> onTap;
+  final int seciliSekme;
+  final ValueChanged<int> sekmeSecildi;
 
   @override
   Widget build(BuildContext context) {
+    const yaziStili = TextStyle(fontSize: 10);
+
     return BottomNavigationBar(
-      currentIndex: seciliIndex,
-      onTap: onTap,
+      currentIndex: seciliSekme,
+      onTap: sekmeSecildi,
       type: BottomNavigationBarType.fixed,
-      selectedLabelStyle: const TextStyle(fontSize: 10),
-      unselectedLabelStyle: const TextStyle(fontSize: 10),
+      selectedLabelStyle: yaziStili,
+      unselectedLabelStyle: yaziStili,
       iconSize: 22,
       backgroundColor: Colors.white,
       selectedItemColor: Colors.black,
