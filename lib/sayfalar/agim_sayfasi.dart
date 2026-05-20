@@ -65,11 +65,7 @@ class AgimSayfasi extends StatelessWidget {
                   ),
                 ),
 
-                Divider(
-                  height: 1,
-                  thickness: 1,
-                  color: Colors.grey.shade300,
-                ),
+                Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -98,11 +94,7 @@ class AgimSayfasi extends StatelessWidget {
                   ),
                 ),
 
-                Divider(
-                  height: 1,
-                  thickness: 1,
-                  color: Colors.grey.shade300,
-                ),
+                Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
 
                 const DavetKarti(
                   isim: "Eren Yalçın",
@@ -118,11 +110,7 @@ class AgimSayfasi extends StatelessWidget {
                   zaman: "1 saat önce",
                 ),
 
-                Divider(
-                  height: 10,
-                  thickness: 10,
-                  color: Colors.grey.shade300,
-                ),
+                Divider(height: 10, thickness: 10, color: Colors.grey.shade300),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -292,10 +280,7 @@ class DavetKarti extends StatelessWidget {
 
                     Text(
                       zaman,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        color: Colors.grey,
-                      ),
+                      style: const TextStyle(fontSize: 13, color: Colors.grey),
                     ),
                   ],
                 ),
@@ -312,10 +297,7 @@ class DavetKarti extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
 
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 1.4,
-                      ),
+                      border: Border.all(color: Colors.grey, width: 1.4),
                     ),
 
                     child: const Icon(
@@ -352,11 +334,7 @@ class DavetKarti extends StatelessWidget {
           ),
         ),
 
-        Divider(
-          height: 1,
-          thickness: 1,
-          color: Colors.grey.shade300,
-        ),
+        Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
       ],
     );
   }
@@ -382,9 +360,7 @@ class KisiKartWidget extends StatelessWidget {
 
         borderRadius: BorderRadius.circular(16),
 
-        border: Border.all(
-          color: Colors.grey.shade300,
-        ),
+        border: Border.all(color: Colors.grey.shade300),
       ),
 
       child: Column(
@@ -436,11 +412,7 @@ class KisiKartWidget extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
 
-                  child: const Icon(
-                    Icons.close,
-                    color: Colors.white,
-                    size: 22,
-                  ),
+                  child: const Icon(Icons.close, color: Colors.white, size: 22),
                 ),
               ),
             ],
@@ -458,10 +430,7 @@ class KisiKartWidget extends StatelessWidget {
 
               textAlign: TextAlign.center,
 
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
           ),
 
@@ -477,10 +446,7 @@ class KisiKartWidget extends StatelessWidget {
 
               textAlign: TextAlign.center,
 
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey.shade700,
-              ),
+              style: TextStyle(fontSize: 12, color: Colors.grey.shade700),
             ),
           ),
 
@@ -490,10 +456,7 @@ class KisiKartWidget extends StatelessWidget {
             "Profiliniz esas alınmıştır",
             textAlign: TextAlign.center,
 
-            style: TextStyle(
-              fontSize: 11,
-              color: Colors.grey.shade600,
-            ),
+            style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
           ),
 
           const SizedBox(height: 14),
@@ -508,10 +471,7 @@ class KisiKartWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
 
-                border: Border.all(
-                  color: const Color(0xFF0A66C2),
-                  width: 1.8,
-                ),
+                border: Border.all(color: const Color(0xFF0A66C2), width: 1.8),
               ),
 
               child: const Center(
@@ -526,7 +486,6 @@ class KisiKartWidget extends StatelessWidget {
               ),
             ),
           ),
-
           const SizedBox(height: 14),
         ],
       ),

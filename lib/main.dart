@@ -5,7 +5,6 @@ import 'sayfalar/ana_sayfa.dart';
 import 'sayfalar/bildirim_sayfasi.dart';
 import 'sayfalar/gonder_sayfasi.dart';
 import 'sayfalar/is_ilanlari_sayfasi.dart';
-
 import 'widgets/alt_navigation_bar.dart';
 import 'widgets/ana_sayfa_appbar.dart';
 
@@ -17,66 +16,60 @@ class Uygulamam extends StatelessWidget {
   const Uygulamam({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext baglam) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      title: 'LinkedIn Tasarım',
-
+      title: 'LinkedIn Ogrenci Tasarimi',
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: const Color(0xFFF3F2EF),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0A66C2)),
       ),
-
-      home: const HomePage(),
+      home: const AnaCerceve(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class AnaCerceve extends StatefulWidget {
+  const AnaCerceve({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AnaCerceve> createState() => _AnaCerceveDurumu();
 }
 
-class _HomePageState extends State<HomePage> {
-  int seciliIndex = 0;
+class _AnaCerceveDurumu extends State<AnaCerceve> {
+  int secilenSayfa = 0;
+
+  bool get gonderSayfasiAcik => secilenSayfa == 2;
 
   @override
-  Widget build(BuildContext context) {
-    final sayfalar = [
+  Widget build(BuildContext baglam) {
+    final List<Widget> sayfalar = [
       const AnaSayfa(),
-
       const AgimSayfasi(),
-
-      GonderSayfasi(
-        geriDon: () {
-          setState(() {
-            seciliIndex = 0;
-          });
-        },
-      ),
-
+      GonderSayfasi(geriDon: _anaSayfayaDon),
       const BildirimSayfasi(),
-
       const IsSayfasi(),
     ];
 
     return Scaffold(
-      appBar: seciliIndex == 2 ? null : const AnaSayfaAppBar(),
-
-      body: sayfalar[seciliIndex],
-
-      bottomNavigationBar: seciliIndex == 2
+      appBar: gonderSayfasiAcik ? null : const AnaSayfaAppBar(),
+      body: sayfalar[secilenSayfa],
+      bottomNavigationBar: gonderSayfasiAcik
           ? null
-          : AltNavigationBar(seciliIndex: seciliIndex, onTap: _sayfaDegistir),
+          : AltNavigationBar(seciliIndex: secilenSayfa, onTap: _sayfaSec),
     );
   }
 
-  void _sayfaDegistir(int index) {
+  void _sayfaSec(int sayfaSirasi) {
     setState(() {
-      seciliIndex = index;
+      secilenSayfa = sayfaSirasi;
+    });
+  }
+
+  void _anaSayfayaDon() {
+    setState(() {
+      secilenSayfa = 0;
     });
   }
 }
