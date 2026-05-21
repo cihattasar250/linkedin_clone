@@ -5,12 +5,12 @@ class AgimSayfasi extends StatelessWidget {
 
   @override
   Widget build(BuildContext baglam) {
+    const sekmeYaziStili = TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
+
     return DefaultTabController(
       length: 2,
-
       child: Scaffold(
         backgroundColor: Colors.white,
-
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -19,46 +19,28 @@ class AgimSayfasi extends StatelessWidget {
                   data: Theme.of(
                     baglam,
                   ).copyWith(dividerColor: Colors.transparent),
-
                   child: TabBar(
                     indicatorColor: const Color(0xFF01754F),
                     indicatorWeight: 3,
-
                     labelColor: const Color(0xFF01754F),
                     unselectedLabelColor: Colors.black54,
-
                     labelPadding: EdgeInsets.zero,
-
                     tabs: [
                       Tab(
                         height: 46,
-
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-
                           children: [
-                            const Text(
-                              "Büyüt",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-
+                            const Text("Büyüt", style: sekmeYaziStili),
                             const SizedBox(width: 6),
                           ],
                         ),
                       ),
-
                       const Tab(
                         height: 46,
-
                         child: Text(
                           "Ağınızdan haberler",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: sekmeYaziStili,
                         ),
                       ),
                     ],
@@ -68,30 +50,17 @@ class AgimSayfasi extends StatelessWidget {
                 _inceAyirici(),
 
                 // Davetler alani ustte sabit dursun diye ayri tutuldu.
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
+                _bolumBasligi(
+                  baslik: "Davetler (10)",
+                  yatayBosluk: 16,
+                  baslikStili: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
                   ),
-
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                    children: [
-                      const Text(
-                        "Davetler (10)",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-
-                      const Icon(
-                        Icons.arrow_forward,
-                        size: 22,
-                        color: Colors.black87,
-                      ),
-                    ],
+                  sagTaraf: const Icon(
+                    Icons.arrow_forward,
+                    size: 22,
+                    color: Colors.black87,
                   ),
                 ),
 
@@ -114,32 +83,16 @@ class AgimSayfasi extends StatelessWidget {
                 _kalinAyirici(),
 
                 // Oneriler bolumu grid olarak kaldi, sadece kod okunurlugu toparlandi.
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 14,
+                _bolumBasligi(
+                  baslik: "Sizin için önerilenler",
+                  yatayBosluk: 12,
+                  baslikStili: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
                   ),
-
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                    children: [
-                      const Text(
-                        "Sizin için önerilenler",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-
-                      Text(
-                        "Tümünü gör",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey.shade700,
-                        ),
-                      ),
-                    ],
+                  sagTaraf: Text(
+                    "Tümünü gör",
+                    style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
                   ),
                 ),
 
@@ -197,6 +150,24 @@ class AgimSayfasi extends StatelessWidget {
 
   Widget _kalinAyirici() {
     return Divider(height: 10, thickness: 10, color: Colors.grey.shade300);
+  }
+
+  Widget _bolumBasligi({
+    required String baslik,
+    required double yatayBosluk,
+    required TextStyle baslikStili,
+    required Widget sagTaraf,
+  }) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: yatayBosluk, vertical: 14),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(baslik, style: baslikStili),
+          sagTaraf,
+        ],
+      ),
+    );
   }
 }
 

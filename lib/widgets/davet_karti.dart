@@ -90,10 +90,7 @@ class DavetKarti extends StatelessWidget {
 
                     Text(
                       zaman,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        color: Colors.grey,
-                      ),
+                      style: const TextStyle(fontSize: 13, color: Colors.grey),
                     ),
                   ],
                 ),
@@ -110,10 +107,7 @@ class DavetKarti extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
 
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 1.4,
-                      ),
+                      border: Border.all(color: Colors.grey, width: 1.4),
                     ),
 
                     child: const Icon(
@@ -129,9 +123,7 @@ class DavetKarti extends StatelessWidget {
                     width: 40,
                     height: 40,
 
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
+                    decoration: const BoxDecoration(shape: BoxShape.circle),
 
                     child: Container(
                       decoration: BoxDecoration(
@@ -156,11 +148,7 @@ class DavetKarti extends StatelessWidget {
           ),
         ),
 
-        Divider(
-          height: 1,
-          thickness: 1,
-          color: Colors.grey.shade300,
-        ),
+        Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
       ],
     );
   }

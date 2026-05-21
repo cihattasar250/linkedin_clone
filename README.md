@@ -44,11 +44,3 @@ Bu proje, LinkedIn uygulamasının mobil arayüz tasarımından esinlenilerek ge
 
 ### İş İlanları Sayfası
 <img width="300" src="assets/ekran_goruntuleri/is_ilanlari.jpeg">
-
----
-
-# Projeyi Çalıştırma
-
-```bash
-flutter pub get
-flutter run

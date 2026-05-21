@@ -38,13 +38,13 @@ class AnaCerceve extends StatefulWidget {
 }
 
 class _AnaCerceveDurumu extends State<AnaCerceve> {
-  int secilenSayfa = 0;
+  int secilenSayfaIndexi = 0;
 
-  bool get gonderSayfasiAcik => secilenSayfa == 2;
+  bool get gonderSayfasiAcik => secilenSayfaIndexi == 2;
 
   @override
   Widget build(BuildContext baglam) {
-    final List<Widget> sayfalar = [
+    final altMenuSayfalari = <Widget>[
       const AnaSayfa(),
       const AgimSayfasi(),
       GonderSayfasi(geriDon: _anaSayfayaDon),
@@ -54,22 +54,22 @@ class _AnaCerceveDurumu extends State<AnaCerceve> {
 
     return Scaffold(
       appBar: gonderSayfasiAcik ? null : const AnaSayfaAppBar(),
-      body: sayfalar[secilenSayfa],
+      body: altMenuSayfalari[secilenSayfaIndexi],
       bottomNavigationBar: gonderSayfasiAcik
           ? null
-          : AltNavigationBar(seciliIndex: secilenSayfa, onTap: _sayfaSec),
+          : AltNavigationBar(seciliIndex: secilenSayfaIndexi, onTap: _sayfaSec),
     );
   }
 
-  void _sayfaSec(int sayfaSirasi) {
+  void _sayfaSec(int yeniSayfaIndexi) {
     setState(() {
-      secilenSayfa = sayfaSirasi;
+      secilenSayfaIndexi = yeniSayfaIndexi;
     });
   }
 
   void _anaSayfayaDon() {
     setState(() {
-      secilenSayfa = 0;
+      secilenSayfaIndexi = 0;
     });
   }
 }

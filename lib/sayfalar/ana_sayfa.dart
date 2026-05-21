@@ -10,7 +10,7 @@ class AnaSayfa extends StatelessWidget {
   @override
   Widget build(BuildContext baglam) {
     // Kartlar liste halinde durunca aralarindaki bosluk kolay ayarlaniyor.
-    final paylasimKartlari = const [
+    final paylasimKartlari = const <PaylasimKarti>[
       PaylasimKarti(
         kullaniciAdi: 'Zeynep Kaya',
         kullaniciUnvani: 'Bilgisayar Programciligi Ogrencisi',
@@ -49,17 +49,19 @@ class AnaSayfa extends StatelessWidget {
     );
   }
 
-  List<Widget> _kartlariBoslukluGoster(List<Widget> paylasimKartlari) {
-    final kartListesi = <Widget>[];
+  List<Widget> _kartlariBoslukluGoster(List<PaylasimKarti> paylasimKartlari) {
+    final boslukluKartListesi = <Widget>[];
 
     for (var i = 0; i < paylasimKartlari.length; i++) {
-      kartListesi.add(paylasimKartlari[i]);
+      final sonKartMi = i == paylasimKartlari.length - 1;
 
-      if (i != paylasimKartlari.length - 1) {
-        kartListesi.add(const SizedBox(height: _kartArasiBosluk));
+      boslukluKartListesi.add(paylasimKartlari[i]);
+
+      if (!sonKartMi) {
+        boslukluKartListesi.add(const SizedBox(height: _kartArasiBosluk));
       }
     }
 
-    return kartListesi;
+    return boslukluKartListesi;
   }
 }

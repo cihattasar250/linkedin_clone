@@ -11,12 +11,12 @@ class GonderSayfasi extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
               const SizedBox(height: 12),
               _ustSatirAlani(),
-              const SizedBox(height: 26),
+              const SizedBox(height: 24),
               _paylasimYaziAlani(),
               _altButonAlani(),
             ],
@@ -38,7 +38,7 @@ class GonderSayfasi extends StatelessWidget {
         const SizedBox(width: 8),
         const Icon(Icons.access_time, size: 30, color: Colors.black87),
         const SizedBox(width: 12),
-        _postalaButonu(),
+        _postalaDurumButonu(),
       ],
     );
   }
@@ -78,7 +78,7 @@ class GonderSayfasi extends StatelessWidget {
     );
   }
 
-  Widget _postalaButonu() {
+  Widget _postalaDurumButonu() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
       decoration: BoxDecoration(

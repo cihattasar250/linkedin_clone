@@ -21,7 +21,7 @@ class BildirimKartiWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 13),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -33,7 +33,7 @@ class BildirimKartiWidget extends StatelessWidget {
             ],
           ),
         ),
-        _altCizgi(),
+        _altAyiriciCizgi(),
       ],
     );
   }
@@ -46,19 +46,18 @@ class BildirimKartiWidget extends StatelessWidget {
   }
 
   Widget _bildirimMetinleri() {
+    final aciklamaYaziStili = TextStyle(
+      fontSize: 14,
+      color: Colors.grey.shade700,
+      height: 1.3,
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _anaBildirimYazisi(),
-        const SizedBox(height: 8),
-        Text(
-          bildirimAciklamasi,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.grey.shade700,
-            height: 1.3,
-          ),
-        ),
+        const SizedBox(height: 7),
+        Text(bildirimAciklamasi, style: aciklamaYaziStili),
         const SizedBox(height: 8),
         _ortakBaglantiSatiri(),
       ],
@@ -90,13 +89,15 @@ class BildirimKartiWidget extends StatelessWidget {
   }
 
   Widget _ortakBaglantiSatiri() {
+    final ortakBaglantiRengi = Colors.grey.shade700;
+
     return Row(
       children: [
-        Icon(Icons.people_alt_outlined, size: 18, color: Colors.grey.shade700),
+        Icon(Icons.people_alt_outlined, size: 18, color: ortakBaglantiRengi),
         const SizedBox(width: 4),
         Text(
           ortakBaglantiYazisi,
-          style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
+          style: TextStyle(fontSize: 14, color: ortakBaglantiRengi),
         ),
       ],
     );
@@ -104,6 +105,7 @@ class BildirimKartiWidget extends StatelessWidget {
 
   Widget _sagBilgiAlani() {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           bildirimZamani,
@@ -115,7 +117,7 @@ class BildirimKartiWidget extends StatelessWidget {
     );
   }
 
-  Widget _altCizgi() {
+  Widget _altAyiriciCizgi() {
     return Divider(height: 1, thickness: 1, color: Colors.grey.shade300);
   }
 }

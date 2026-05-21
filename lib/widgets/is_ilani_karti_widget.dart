@@ -35,43 +35,63 @@ class IsIlaniKartiWidget extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Logo kutusunun boyutu tüm kartlarda aynı kalıyor.
-              Container(
-                width: 58,
-                height: 58,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Icon(sirketIkonu, color: Colors.white, size: 30),
-              ),
+              _sirketLogoKutusu(),
               const SizedBox(width: 14),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(isBasligi, style: baslikYaziStili),
-                    const SizedBox(height: 3),
-                    Text(sirketAdi, style: araYaziStili),
-                    const SizedBox(height: 3),
-                    Text(calismaKonumu, style: araYaziStili),
-                    const SizedBox(height: 8),
-                    Text(kisaDetay, style: detayYaziStili),
-                  ],
+                child: _ilanYaziAlani(
+                  baslikYaziStili: baslikYaziStili,
+                  araYaziStili: araYaziStili,
+                  detayYaziStili: detayYaziStili,
                 ),
               ),
-              const SizedBox(
-                width: 32,
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Icon(Icons.close, size: 28, color: Colors.black87),
-                ),
-              ),
+              _kapatmaIkonu(),
             ],
           ),
         ),
         Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
       ],
+    );
+  }
+
+  Widget _sirketLogoKutusu() {
+    // Logo kutusunun boyutu tum kartlarda ayni kaliyor.
+    return Container(
+      width: 58,
+      height: 58,
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Icon(sirketIkonu, color: Colors.white, size: 30),
+    );
+  }
+
+  Widget _ilanYaziAlani({
+    required TextStyle baslikYaziStili,
+    required TextStyle araYaziStili,
+    required TextStyle detayYaziStili,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(isBasligi, style: baslikYaziStili),
+        const SizedBox(height: 3),
+        Text(sirketAdi, style: araYaziStili),
+        const SizedBox(height: 3),
+        Text(calismaKonumu, style: araYaziStili),
+        const SizedBox(height: 8),
+        Text(kisaDetay, style: detayYaziStili),
+      ],
+    );
+  }
+
+  Widget _kapatmaIkonu() {
+    return const SizedBox(
+      width: 32,
+      child: Align(
+        alignment: Alignment.topRight,
+        child: Icon(Icons.close, size: 28, color: Colors.black87),
+      ),
     );
   }
 }

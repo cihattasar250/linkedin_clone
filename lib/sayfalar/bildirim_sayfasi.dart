@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 import '../widgets/bildirim_karti_widget.dart';
 import '../widgets/filtre_cip_widget.dart';
 
+const List<_BildirimFiltresi> _bildirimFiltreleri = [
+  _BildirimFiltresi(yazi: "Tümü", secili: true),
+  _BildirimFiltresi(yazi: "İş İlanları"),
+  _BildirimFiltresi(yazi: "Gönderilerim"),
+  _BildirimFiltresi(yazi: "Bahsetmeler"),
+];
+
 class BildirimSayfasi extends StatelessWidget {
   const BildirimSayfasi({super.key});
 
   @override
   Widget build(BuildContext baglam) {
-    final bildirimler = const [
+    final bildirimKartlari = const [
       BildirimKartiWidget(
         kullaniciAdi: "Ceren Bıyık",
         bildirimAciklamasi:
@@ -60,8 +67,8 @@ class BildirimSayfasi extends StatelessWidget {
         children: [
           const SizedBox(height: 12),
           _filtreSatiri(),
-          const SizedBox(height: 14),
-          _bildirimListesi(bildirimler),
+          const SizedBox(height: 12),
+          _bildirimListesi(bildirimKartlari),
         ],
       ),
     );
@@ -69,26 +76,33 @@ class BildirimSayfasi extends StatelessWidget {
 
   // Ustteki filtreler appbar altinda yan yana duruyor.
   Widget _filtreSatiri() {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          SizedBox(width: 12),
-          FiltreChipWidget(yazi: "Tümü", secili: true),
-          SizedBox(width: 8),
-          FiltreChipWidget(yazi: "İş İlanları"),
-          SizedBox(width: 8),
-          FiltreChipWidget(yazi: "Gönderilerim"),
-          SizedBox(width: 8),
-          FiltreChipWidget(yazi: "Bahsetmeler"),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
+          for (int i = 0; i < _bildirimFiltreleri.length; i++) ...[
+            FiltreChipWidget(
+              yazi: _bildirimFiltreleri[i].yazi,
+              secili: _bildirimFiltreleri[i].secili,
+            ),
+            if (i != _bildirimFiltreleri.length - 1) const SizedBox(width: 8),
+          ],
+          const SizedBox(width: 12),
         ],
       ),
     );
   }
 
   // Kartlarin arasindaki cizgiler kart widgetinda kalmaya devam ediyor.
-  Widget _bildirimListesi(List<Widget> bildirimler) {
-    return Expanded(child: ListView(children: bildirimler));
+  Widget _bildirimListesi(List<Widget> bildirimKartlari) {
+    return Expanded(child: ListView(children: bildirimKartlari));
   }
+}
+
+class _BildirimFiltresi {
+  final String yazi;
+  final bool secili;
+
+  const _BildirimFiltresi({required this.yazi, this.secili = false});
 }
