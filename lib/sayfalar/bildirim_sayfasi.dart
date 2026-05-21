@@ -10,57 +10,57 @@ const List<_BildirimFiltresi> _bildirimFiltreleri = [
   _BildirimFiltresi(yazi: "Bahsetmeler"),
 ];
 
+const List<BildirimKartiWidget> _bildirimKartlari = [
+  BildirimKartiWidget(
+    kullaniciAdi: "Ceren Bıyık",
+    bildirimAciklamasi:
+        "Microsoft şirketinde Üniversite Birinci Sınıf Öğrencisi",
+    ortakBaglantiYazisi: "7 ortak bağlantı",
+    bildirimZamani: "16 saat",
+    profilFotografUrl: "https://i.pravatar.cc/300?img=5",
+  ),
+  BildirimKartiWidget(
+    kullaniciAdi: "Ahmet Yılmaz",
+    bildirimAciklamasi: "Flutter Developer • Mobil Uygulama Geliştirici",
+    ortakBaglantiYazisi: "12 ortak bağlantı",
+    bildirimZamani: "2 saat",
+    profilFotografUrl: "https://i.pravatar.cc/300?img=12",
+  ),
+  BildirimKartiWidget(
+    kullaniciAdi: "Ayşe Demir",
+    bildirimAciklamasi: "UI/UX Designer • Figma ve Mobil Tasarım",
+    ortakBaglantiYazisi: "5 ortak bağlantı",
+    bildirimZamani: "1 gün",
+    profilFotografUrl: "https://i.pravatar.cc/300?img=9",
+  ),
+  BildirimKartiWidget(
+    kullaniciAdi: "Fatma Kaya",
+    bildirimAciklamasi: "Network",
+    ortakBaglantiYazisi: "1 ortak bağlantı",
+    bildirimZamani: "9 gün",
+    profilFotografUrl: "https://i.pravatar.cc/300?img=",
+  ),
+  BildirimKartiWidget(
+    kullaniciAdi: "Zeynep Şahin",
+    bildirimAciklamasi: "Proje Yöneticisi",
+    ortakBaglantiYazisi: "6 ortak bağlantı",
+    bildirimZamani: "1 gün",
+    profilFotografUrl: "https://i.pravatar.cc/300?img=25a",
+  ),
+  BildirimKartiWidget(
+    kullaniciAdi: "Miraç Boz",
+    bildirimAciklamasi: "Proje Yöneticisi",
+    ortakBaglantiYazisi: "6 ortak bağlantı",
+    bildirimZamani: "1 gün",
+    profilFotografUrl: "https://i.pravatar.cc/300?img=54",
+  ),
+];
+
 class BildirimSayfasi extends StatelessWidget {
   const BildirimSayfasi({super.key});
 
   @override
   Widget build(BuildContext baglam) {
-    final bildirimKartlari = const <BildirimKartiWidget>[
-      BildirimKartiWidget(
-        kullaniciAdi: "Ceren Bıyık",
-        bildirimAciklamasi:
-            "Microsoft şirketinde Üniversite Birinci Sınıf Öğrencisi",
-        ortakBaglantiYazisi: "7 ortak bağlantı",
-        bildirimZamani: "16 saat",
-        profilFotografUrl: "https://i.pravatar.cc/300?img=5",
-      ),
-      BildirimKartiWidget(
-        kullaniciAdi: "Ahmet Yılmaz",
-        bildirimAciklamasi: "Flutter Developer • Mobil Uygulama Geliştirici",
-        ortakBaglantiYazisi: "12 ortak bağlantı",
-        bildirimZamani: "2 saat",
-        profilFotografUrl: "https://i.pravatar.cc/300?img=12",
-      ),
-      BildirimKartiWidget(
-        kullaniciAdi: "Ayşe Demir",
-        bildirimAciklamasi: "UI/UX Designer • Figma ve Mobil Tasarım",
-        ortakBaglantiYazisi: "5 ortak bağlantı",
-        bildirimZamani: "1 gün",
-        profilFotografUrl: "https://i.pravatar.cc/300?img=9",
-      ),
-      BildirimKartiWidget(
-        kullaniciAdi: "Fatma Kaya",
-        bildirimAciklamasi: "Network",
-        ortakBaglantiYazisi: "1 ortak bağlantı",
-        bildirimZamani: "9 gün",
-        profilFotografUrl: "https://i.pravatar.cc/300?img=",
-      ),
-      BildirimKartiWidget(
-        kullaniciAdi: "Zeynep Şahin",
-        bildirimAciklamasi: "Proje Yöneticisi",
-        ortakBaglantiYazisi: "6 ortak bağlantı",
-        bildirimZamani: "1 gün",
-        profilFotografUrl: "https://i.pravatar.cc/300?img=25a",
-      ),
-      BildirimKartiWidget(
-        kullaniciAdi: "Miraç Boz",
-        bildirimAciklamasi: "Proje Yöneticisi",
-        ortakBaglantiYazisi: "6 ortak bağlantı",
-        bildirimZamani: "1 gün",
-        profilFotografUrl: "https://i.pravatar.cc/300?img=54",
-      ),
-    ];
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -68,7 +68,7 @@ class BildirimSayfasi extends StatelessWidget {
           const SizedBox(height: 12),
           _filtreSatiri(),
           const SizedBox(height: 12),
-          _bildirimListeAlani(bildirimKartlari),
+          _bildirimListeAlani(),
         ],
       ),
     );
@@ -95,8 +95,8 @@ class BildirimSayfasi extends StatelessWidget {
   }
 
   // Kartlarin arasindaki cizgiler kart widgetinda kalmaya devam ediyor.
-  Widget _bildirimListeAlani(List<BildirimKartiWidget> bildirimKartlari) {
-    return Expanded(child: ListView(children: bildirimKartlari));
+  Widget _bildirimListeAlani() {
+    return Expanded(child: ListView(children: _bildirimKartlari));
   }
 }
 

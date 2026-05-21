@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+const _aramaKutusuKenarligi = OutlineInputBorder(
+  borderRadius: BorderRadius.all(Radius.circular(30)),
+  borderSide: BorderSide(color: Colors.black, width: 1),
+);
+
 class AnaSayfaAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AnaSayfaAppBar({super.key});
 
@@ -40,12 +45,6 @@ class _AramaKutusu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Arama kutusunun kenarligi her durumda ayni kalsin.
-    final aramaKenarligi = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
-      borderSide: const BorderSide(color: Colors.black, width: 1),
-    );
-
     return SizedBox(
       height: 40,
       child: TextField(
@@ -56,9 +55,9 @@ class _AramaKutusu extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
           contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-          border: aramaKenarligi,
-          enabledBorder: aramaKenarligi,
-          focusedBorder: aramaKenarligi,
+          border: _aramaKutusuKenarligi,
+          enabledBorder: _aramaKutusuKenarligi,
+          focusedBorder: _aramaKutusuKenarligi,
         ),
       ),
     );
