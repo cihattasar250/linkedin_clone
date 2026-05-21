@@ -15,7 +15,7 @@ class BildirimSayfasi extends StatelessWidget {
 
   @override
   Widget build(BuildContext baglam) {
-    final bildirimKartlari = const [
+    final bildirimKartlari = const <BildirimKartiWidget>[
       BildirimKartiWidget(
         kullaniciAdi: "Ceren Bıyık",
         bildirimAciklamasi:
@@ -68,7 +68,7 @@ class BildirimSayfasi extends StatelessWidget {
           const SizedBox(height: 12),
           _filtreSatiri(),
           const SizedBox(height: 12),
-          _bildirimListesi(bildirimKartlari),
+          _bildirimListeAlani(bildirimKartlari),
         ],
       ),
     );
@@ -95,7 +95,7 @@ class BildirimSayfasi extends StatelessWidget {
   }
 
   // Kartlarin arasindaki cizgiler kart widgetinda kalmaya devam ediyor.
-  Widget _bildirimListesi(List<Widget> bildirimKartlari) {
+  Widget _bildirimListeAlani(List<BildirimKartiWidget> bildirimKartlari) {
     return Expanded(child: ListView(children: bildirimKartlari));
   }
 }

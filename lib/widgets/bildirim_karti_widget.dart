@@ -21,7 +21,7 @@ class BildirimKartiWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 13),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -29,7 +29,7 @@ class BildirimKartiWidget extends StatelessWidget {
               const SizedBox(width: 12),
               Expanded(child: _bildirimMetinleri()),
               const SizedBox(width: 10),
-              _sagBilgiAlani(),
+              _zamanVeMenuAlani(),
             ],
           ),
         ),
@@ -103,12 +103,13 @@ class BildirimKartiWidget extends StatelessWidget {
     );
   }
 
-  Widget _sagBilgiAlani() {
+  Widget _zamanVeMenuAlani() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           bildirimZamani,
+          textAlign: TextAlign.right,
           style: TextStyle(fontSize: 13, color: Colors.grey.shade600),
         ),
         const SizedBox(height: 10),

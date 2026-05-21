@@ -38,7 +38,7 @@ class PaylasimKarti extends StatelessWidget {
           const SizedBox(height: 12),
           _paylasimGorseli(),
           const SizedBox(height: 10),
-          _altAyiriciCizgi(),
+          _butonAyiriciCizgisi(),
           const _AltButonSatiri(),
         ],
       ),
@@ -82,6 +82,7 @@ class PaylasimKarti extends StatelessWidget {
   Widget _paylasimMetniAlani() {
     return Text(
       paylasimMetni,
+      textAlign: TextAlign.start,
       style: const TextStyle(fontSize: 14, height: 1.35),
     );
   }
@@ -98,7 +99,7 @@ class PaylasimKarti extends StatelessWidget {
     );
   }
 
-  Widget _altAyiriciCizgi() {
+  Widget _butonAyiriciCizgisi() {
     return Divider(height: 14, thickness: 1, color: Colors.grey.shade300);
   }
 }
@@ -112,26 +113,20 @@ class _AltButonSatiri extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _PaylasimButonu(
-          butonIkonu: Icons.thumb_up_alt_outlined,
-          butonYazisi: 'Begen',
-        ),
-        _PaylasimButonu(
-          butonIkonu: Icons.chat_bubble_outline,
-          butonYazisi: 'Yorum',
-        ),
-        _PaylasimButonu(butonIkonu: Icons.repeat, butonYazisi: 'Paylas'),
-        _PaylasimButonu(butonIkonu: Icons.send_outlined, butonYazisi: 'Gonder'),
+        _PaylasimButonu(ikon: Icons.thumb_up_alt_outlined, yazi: 'Begen'),
+        _PaylasimButonu(ikon: Icons.chat_bubble_outline, yazi: 'Yorum'),
+        _PaylasimButonu(ikon: Icons.repeat, yazi: 'Paylas'),
+        _PaylasimButonu(ikon: Icons.send_outlined, yazi: 'Gonder'),
       ],
     );
   }
 }
 
 class _PaylasimButonu extends StatelessWidget {
-  const _PaylasimButonu({required this.butonIkonu, required this.butonYazisi});
+  const _PaylasimButonu({required this.ikon, required this.yazi});
 
-  final IconData butonIkonu;
-  final String butonYazisi;
+  final IconData ikon;
+  final String yazi;
 
   @override
   Widget build(BuildContext baglam) {
@@ -141,9 +136,9 @@ class _PaylasimButonu extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
         children: [
-          Icon(butonIkonu, size: 20, color: Colors.grey),
+          Icon(ikon, size: 20, color: Colors.grey),
           const SizedBox(height: 3),
-          Text(butonYazisi, style: butonYaziStili),
+          Text(yazi, textAlign: TextAlign.center, style: butonYaziStili),
         ],
       ),
     );

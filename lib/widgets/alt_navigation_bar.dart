@@ -3,20 +3,19 @@ import 'package:flutter/material.dart';
 class AltNavigationBar extends StatelessWidget {
   const AltNavigationBar({
     super.key,
-    required int seciliIndex,
-    required ValueChanged<int> onTap,
-  }) : seciliSekme = seciliIndex,
-       sekmeSecildi = onTap;
+    required this.seciliIndex,
+    required this.onTap,
+  });
 
-  final int seciliSekme;
-  final ValueChanged<int> sekmeSecildi;
+  final int seciliIndex;
+  final ValueChanged<int> onTap;
 
   @override
   Widget build(BuildContext context) {
     const altMenuYaziStili = TextStyle(fontSize: 10);
 
     // Sekme sirasi main.dart icindeki sayfa sirasi ile ayni kalmali.
-    const sekmeler = [
+    const altMenuSekmeleri = [
       BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Ana Sayfa'),
       BottomNavigationBarItem(icon: Icon(Icons.people_outline), label: 'Ağım'),
       BottomNavigationBarItem(
@@ -31,8 +30,8 @@ class AltNavigationBar extends StatelessWidget {
     ];
 
     return BottomNavigationBar(
-      currentIndex: seciliSekme,
-      onTap: sekmeSecildi,
+      currentIndex: seciliIndex,
+      onTap: onTap,
       type: BottomNavigationBarType.fixed,
       selectedLabelStyle: altMenuYaziStili,
       unselectedLabelStyle: altMenuYaziStili,
@@ -40,7 +39,7 @@ class AltNavigationBar extends StatelessWidget {
       backgroundColor: Colors.white,
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.grey,
-      items: sekmeler,
+      items: altMenuSekmeleri,
     );
   }
 }
